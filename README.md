@@ -6,30 +6,24 @@ This library can be used to control 2 motors direction and speed individually.
 
 # Examples
 ```c++
-#include <L298N.h>
+// attach motor
+driver.motor_one.attach(5, 6, 7); // ENA, in1, in2
+driver.motor_two.attach(8, 9, 10); // ENB, in3, in4
 
-L298N driver;
+// Rotate clockwise
+driver.motor_one.forward();
+driver.motor_two.forward();
 
-void setup () {
-    // attach motor
-    driver.motor_one.attach(5, 6, 7); // ENA, in1, in2
-    driver.motor_two.attach(8, 9, 10); // ENB, in3, in4
+// Rotate counter-clockwise
+driver.motor_one.backward();
+driver.motor_two.backward();
 
-    // Rotate clockwise
-    driver.motor_one.forward();
-    driver.motor_two.forward();
+// Setting speed
+driver.motor_one.set_speed(100); // 0 to 255
+driver.motor_two.set_speed(100); // 0 to 255
 
-    // Rotate counter-clockwise
-    driver.motor_one.backward();
-    driver.motor_two.backward();
-
-    // Setting speed
-    driver.motor_one.set_speed(100); // 0 to 255
-    driver.motor_two.set_speed(100); // 0 to 255
-
-    // Brake
-    driver.motor_one.brake();
-    driver.motor_two.brake();
-}
+// Brake
+driver.motor_one.brake();
+driver.motor_two.brake();
 
 ```
